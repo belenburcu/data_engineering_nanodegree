@@ -65,7 +65,7 @@ Sample Log Data:
 |  sql_queries.py  |            SQL queries for data modeling and ETL             |
 |    etl.ipynb     | Processes a file from song_data and log_data and loads the data into tables |
 |      etl.py      | Processes all files from song_data and log_data and loads them into  tables |
-|    test.ipynb    |                Exploring the database tables                 |
+|    test.ipynb    |                Explores the database tables                 |
 
 
 ## How to Run Python Scripts
@@ -74,11 +74,11 @@ To create the database tables and run the ETL pipeline, you must run the followi
 
 To create tables:
 ```
-python3 create_tables.py
+python create_tables.py
 ```
 To fill tables via ETL:
 ```
-python3 etl.py
+python etl.py
 ```
 To check whether the data has been loaded into database by executing queries:
 ```
