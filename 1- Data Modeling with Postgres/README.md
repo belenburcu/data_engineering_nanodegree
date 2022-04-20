@@ -53,3 +53,6 @@ Sample Log Data:
     "userId":"26"
 }
 ```
+
+### Database Schema
+<img src="./images/dbdiagram.png" alt="Logo" width="200" height="200">
