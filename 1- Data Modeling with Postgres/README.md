@@ -60,7 +60,7 @@ Sample Log Data:
 
 |  File / Folder   |                         Description                          |
 | :--------------: | :----------------------------------------------------------: |
-|       data       |               All song and log data JSONS                    |
+|    data.zip      |               All song and log data JSONS                    |
 | create_tables.py |                  Drops and creates tables                    |
 |  sql_queries.py  |            SQL queries for data modeling and ETL             |
 |    etl.ipynb     | Processes a file from song_data and log_data and loads the data into tables |
