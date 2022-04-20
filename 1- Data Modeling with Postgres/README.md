@@ -1,9 +1,8 @@
 <h1 align="center"> Data Modeling ETL with Postgres </h1>
 
-## About The Project
+## Project Description
 A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to. Currently, they don't have an easy way to query their data, which resides in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
-## Project Description
 In this project, I created a database schema, and data modeling with Postgres and ETL pipeline using Python for this analysis. To complete the project, it needed to define fact and dimension tables for a star schema for a particular analytic focus, and write an ETL pipeline that transfers data from files in two local directories into these tables in Postgres using Python and SQL. It can test the database and ETL pipeline by running queries given by the analytics team from Sparkify and comparing results with their expected results.
 
 ## Dataset
@@ -54,5 +53,38 @@ Sample Log Data:
 }
 ```
 
-## Database Schema
+## Database Schema 
 <img src="./dbdiagram.png" alt="Logo">
+
+## Project Structure
+
+|  File / Folder   |                         Description                          |
+| :--------------: | :----------------------------------------------------------: |
+|       data       |               All song and log data JSONS                    |
+| create_tables.py |                  Drops and creates tables                    |
+|  sql_queries.py  |            SQL queries for data modeling and ETL             |
+|    etl.ipynb     | Processes a file from song_data and log_data and loads the data into tables |
+|      etl.py      | Processes all files from song_data and log_data and loads them into  tables |
+|    test.ipynb    |                Exploring the database tables                 |
+
+
+## How to Run Python Scripts
+
+To create the database tables and run the ETL pipeline, you must run the following two files in the order that they are listed below
+
+To create tables:
+```
+python3 create_tables.py
+```
+To fill tables via ETL:
+```
+python3 etl.py
+```
+To check whether the data has been loaded into database by executing queries:
+```
+test.ipynb
+```
+Run ```create_tables.py``` file to reset tables before each time run your ETL scripts.
+
+## Author
+Burcu Belen - [Linkedin](https://www.linkedin.com/in/burcu-belen/)
