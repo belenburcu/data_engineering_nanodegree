@@ -55,4 +55,4 @@ Sample Log Data:
 ```
 
 ### Database Schema
-<img src="./images/dbdiagram.png" alt="Logo" width="200" height="200">
+<img src="./dbdiagram.png" alt="Logo" width="200" height="200">
