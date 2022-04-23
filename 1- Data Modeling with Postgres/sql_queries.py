@@ -8,21 +8,6 @@ time_table_drop = "DROP TABLE IF EXISTS time"
 
 # CREATE TABLES
 
-songplay_table_create = ("""
-CREATE TABLE IF NOT EXISTS songplays
-(
-    songplay_id SERIAL PRIMARY KEY, 
-    start_time TIMESTAMP NOT NULL REFERENCES time(start_time),
-    user_id INT NOT NULL REFERENCES users(user_id),
-    level VARCHAR,
-    song_id VARCHAR REFERENCES songs(song_id),
-    artist_id VARCHAR REFERENCES artists(artist_id),
-    session_id INT,
-    location VARCHAR,
-    user_agent VARCHAR  
-)
-""")
-
 user_table_create = ("""
 CREATE TABLE IF NOT EXISTS users
 (
@@ -69,25 +54,22 @@ CREATE TABLE IF NOT EXISTS time
 )
 """)
 
-# INSERT RECORDS
-
-songplay_table_insert = ("""
-INSERT INTO songplays
+songplay_table_create = ("""
+CREATE TABLE IF NOT EXISTS songplays
 (
-    songplay_id,
-    start_time,
-    user_id,
-    level,
-    song_id,
-    artist_id,
-    session_id,
-    location,
-    user_agent
+    songplay_id SERIAL PRIMARY KEY, 
+    start_time TIMESTAMP NOT NULL REFERENCES time(start_time),
+    user_id INT NOT NULL REFERENCES users(user_id),
+    level VARCHAR,
+    song_id VARCHAR REFERENCES songs(song_id),
+    artist_id VARCHAR REFERENCES artists(artist_id),
+    session_id INT,
+    location VARCHAR,
+    user_agent VARCHAR  
 )
-VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)
-ON CONFLICT(songplay_id) DO NOTHING
 """)
 
+# INSERT RECORDS
 user_table_insert = ("""
 INSERT INTO users
 (
@@ -98,7 +80,8 @@ INSERT INTO users
     level
 )
 VALUES(%s, %s, %s, %s, %s)
-ON CONFLICT (user_id) DO NOTHING
+ON CONFLICT (user_id)
+DO UPDATE SET level = EXCLUDED.level
 """)
 
 song_table_insert = ("""
@@ -144,6 +127,23 @@ ON CONFLICT(start_time)
 DO NOTHING
 """)
 
+songplay_table_insert = ("""
+INSERT INTO songplays
+(
+    songplay_id,
+    start_time,
+    user_id,
+    level,
+    song_id,
+    artist_id,
+    session_id,
+    location,
+    user_agent
+)
+VALUES(DEFAULT, %s, %s, %s, %s, %s, %s, %s, %s)
+ON CONFLICT(songplay_id) DO NOTHING
+""")
+
 # FIND SONGS
 
 song_select = ("""
@@ -154,5 +154,5 @@ WHERE songs.title=%s AND artists.name=%s AND songs.duration=%s;
 """)
 
 # QUERY LISTS
-create_table_queries = [user_table_create, artist_table_create, song_table_create, time_table_create, songplay_table_create]
-drop_table_queries =   [user_table_create, artist_table_create, song_table_create, time_table_create, songplay_table_create]
+create_table_queries = [user_table_create, song_table_create, time_table_create, artist_table_create, songplay_table_create]
+drop_table_queries =   [user_table_create, song_table_create, time_table_create, artist_table_create, songplay_table_create]
