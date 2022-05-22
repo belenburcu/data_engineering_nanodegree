@@ -2,7 +2,7 @@
 
 Learn to design data models, build data warehouses and data lakes, automate data pipelines, and work with massive datasets. At the end of the program, you’ll combine your new skills by completing a capstone project.
 
-**- Data Modeling**
+**1- Data Modeling** Project : https://github.com/belenburcu/data-modeling-and-ETL-with-Postgres
 
 Learn to create relational and NoSQL data models to fit the diverse needs of data consumers. Use ETL to build databases in PostgreSQL and Apache Cassandra.
 
